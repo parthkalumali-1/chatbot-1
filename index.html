@@ -117,7 +117,7 @@
             inputField.value = "";
 
             // Find a bot reply or fallback response
-            const botReply = botReplies[userMessage.toLowerCase()] || "I didn't understand that. Can you rephrase?";
+            const botReply = botReplies[userMessage.toLowerCase()] || "I didn't understand that. Can you please use the messages given in the list (im not that advanced yet)?";
             appendMessage(botReply, "bot-message");
         }
 
