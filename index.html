@@ -117,22 +117,22 @@
         // Handle user input and bot response
         function handleUserInput() {
             const userMessage = inputField.value.trim();
-            if (!userMessage) return;
+            if (!userMessage) return; // Prevent sending empty messages
 
             // Display user's message
             appendMessage(userMessage, "user-message");
-            inputField.value = "";
+            inputField.value = ""; // Clear input field
 
             // Find a bot reply or fallback response
             const botReply = botReplies[userMessage.toLowerCase()] || 
-                             "I didn't understand that. Please try typing 'help' for a list of supported responses.";
+                             "I didn't understand that. Please type 'help' for supported responses.";
             appendMessage(botReply, "bot-message");
         }
 
         // Add event listeners
-        sendButton.addEventListener("click", handleUserInput);
+        sendButton.addEventListener("click", handleUserInput); // Send message on button click
         inputField.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") handleUserInput();
+            if (event.key === "Enter") handleUserInput(); // Send message on Enter key
         });
 
         // Display welcome message on page load
