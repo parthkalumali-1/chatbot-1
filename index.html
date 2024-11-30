@@ -96,14 +96,14 @@
             "what is your name?": "I'm your friendly chatbot.",
             "bye": "Goodbye! Have a great day!",
             "who made you?": "I was made by PARTH.",
-            "help": "Here are some things you can ask me:\n- hello\n- how are you?\n- what is your name?\n- who made you?\n- bye"
+            "help": "Here are some things you can ask me:<br>- hello<br>- how are you?<br>- what is your name?<br>- who made you?<br>- bye"
         };
 
         // Add a message to the chat container
         function appendMessage(content, className) {
             const messageDiv = document.createElement("div");
             messageDiv.className = `message ${className}`;
-            messageDiv.textContent = content;
+            messageDiv.innerHTML = content; // Use innerHTML to allow rendering of HTML tags like <br>
             chatContainer.appendChild(messageDiv);
             chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to the bottom
         }
