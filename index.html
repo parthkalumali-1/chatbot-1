@@ -95,8 +95,8 @@
             "how are you?": "I'm just a bot, but I'm here to help you!",
             "what is your name?": "I'm your friendly chatbot.",
             "bye": "Goodbye! Have a great day!",
-            "who made you?": "I was made by PARTH"
-            "help": "who made you?, bye, what is your name?, how are you?, hello"
+            "who made you?": "I was made by PARTH.",
+            "help": "Here are some things you can ask me:\n- hello\n- how are you?\n- what is your name?\n- who made you?\n- bye"
         };
 
         // Add a message to the chat container
@@ -106,6 +106,12 @@
             messageDiv.textContent = content;
             chatContainer.appendChild(messageDiv);
             chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to the bottom
+        }
+
+        // Display initial bot instruction
+        function showWelcomeMessage() {
+            const welcomeMessage = "Welcome! For a list of responses, type 'help'.";
+            appendMessage(welcomeMessage, "bot-message");
         }
 
         // Handle user input and bot response
@@ -118,7 +124,8 @@
             inputField.value = "";
 
             // Find a bot reply or fallback response
-            const botReply = botReplies[userMessage.toLowerCase()] || "I didn't understand that. Can you please use the messages given in the list (I'm not that advanced yet)?";
+            const botReply = botReplies[userMessage.toLowerCase()] || 
+                             "I didn't understand that. Please try typing 'help' for a list of supported responses.";
             appendMessage(botReply, "bot-message");
         }
 
@@ -127,6 +134,9 @@
         inputField.addEventListener("keydown", (event) => {
             if (event.key === "Enter") handleUserInput();
         });
+
+        // Display welcome message on page load
+        showWelcomeMessage();
     </script>
 </body>
 </html>
