@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "hello": ["Hi there!", "Hello! 👋", "Hey! How can I assist you?"],
         "help": [
             "Here are some commands you can try:\n-> hello\n-> /joke\n-> /time\n-> /weather",
-            "Need help? Here's what I can do:\n- Tell jokes (/joke)\n- Show the time (/time)",
+            "Need help? Here's what I can do:\n- Tell jokes (/joke)\n- Show the time (/time)\n- how are you?\n- what is your name?\n- bye\n- who made you?",
         ],
         "/joke": [
             "Why don’t skeletons fight each other? They don’t have the guts. 😂",
@@ -16,6 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
         ],
         "/time": () => `The current time is: ${new Date().toLocaleTimeString()}.`,
         "/weather": () => "It's always sunny in ChatRobo world! ☀️",
+        "how are you?": "I'm just a bot 🤖, but I'm here to help you!🤝",
+        "what is your name?": "I'm your friendly chatbot 🫂.",
+        "bye": "Goodbye! Have a great day! 👋",
+        "who made you?": "I was made with HTML,CSS and JavaScript 🧑‍💻 by some human gang .",
     };
 
     const defaultReply = "I didn't understand that. Type 'help' for suggestions.";
