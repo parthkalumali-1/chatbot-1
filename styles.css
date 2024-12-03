@@ -1,125 +1,135 @@
-/* Base Styles */
-body {
-    font-family: 'Arial', sans-serif;
+/* General Reset for Better Layout Control */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    align-items: center;
     height: 100vh;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0;
+    background-color: #f4f4f4;
 }
 
-:root {
-    --bg-color: #f4f4f4;
-    --text-color: #000;
-    --header-bg: #007bff;
-    --message-bg: #fff;
-    --button-bg: #007bff;
-    --button-hover-bg: #0056b3;
-    --bot-message-bg: #e5e5e5;
-}
-
-body.dark {
-    --bg-color: #181818;
-    --text-color: #f1f1f1;
-    --header-bg: #444;
-    --message-bg: #333;
-    --button-bg: #555;
-    --button-hover-bg: #777;
-    --bot-message-bg: #555;
-}
-
-#app-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 600px;
-    height: 90vh;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-#chat-header {
-    background-color: var(--header-bg);
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#theme-toggle {
-    background: none;
-    color: white;
-    border: 1px solid white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
+/* Chat Container */
 #chat-container {
-    flex: 1;
-    background-color: var(--message-bg);
-    overflow-y: auto;
+    width: 90%;
+    max-width: 600px;
+    height: 70vh;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #fff;
     padding: 10px;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px; /* Space from input area */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow for elegance */
 }
 
+/* Messages */
 .message {
-    margin: 10px;
-    padding: 15px;
-    border-radius: 10px;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
     max-width: 70%;
-    animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    word-wrap: break-word; /* Ensure text wraps correctly */
 }
 
 .user-message {
-    background-color: var(--button-bg);
+    background-color: #007bff;
     color: white;
     align-self: flex-end;
 }
 
 .bot-message {
-    background-color: var(--bot-message-bg);
+    background-color: #e5e5e5;
     color: black;
     align-self: flex-start;
 }
 
+/* Input Container */
 #input-container {
     display: flex;
-    background: var(--message-bg);
-    padding: 10px;
-    border-top: 1px solid #ccc;
+    width: 90%;
+    max-width: 600px;
 }
 
+/* Input Field */
 #input-field {
     flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
-    margin-right: 5px;
+    margin-right: 5px; /* Add spacing between input and button */
 }
 
+/* Send Button */
 #send-button {
-    background-color: var(--button-bg);
+    padding: 10px 15px; /* Adjust padding for consistency */
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 10px 15px;
     cursor: pointer;
     font-size: 1rem;
+    transition: background-color 0.3s ease;
 }
 
 #send-button:hover {
-    background-color: var(--button-hover-bg);
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Chat Header (Optional Title for Chat) */
+header {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Theme Toggle Button */
+#toggle-theme {
+    margin: 10px 0;
+    padding: 5px 10px;
+    background-color: white;
+    color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+#toggle-theme:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Add Responsiveness for Small Screens */
+@media (max-width: 768px) {
+    #chat-container {
+        height: 60vh; /* Reduce height for smaller devices */
+    }
+
+    #input-field {
+        font-size: 0.9rem;
+    }
+
+    #send-button {
+        font-size: 0.9rem;
+    }
 }
