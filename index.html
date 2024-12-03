@@ -6,7 +6,35 @@
     <title>ChatRobo - Interactive Chatbot</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+<body><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatRobo - Interactive Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 <body>
+    <div id="app-container">
+        <header id="chat-header">
+            <h1>ChatRobo</h1>
+            <button id="theme-toggle">Toggle Theme</button>
+        </header>
+        <div id="chat-container" aria-label="Chat messages"></div>
+        <div id="input-container">
+            <input 
+                type="text" 
+                id="input-field" 
+                placeholder="Type your message..." 
+                aria-label="Type your message" 
+            />
+            <button id="send-button" aria-label="Send message">Send</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
     <div id="chat-container" aria-label="Chat messages"></div>
     <div id="input-container">
         <input 
