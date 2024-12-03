@@ -1,6 +1,6 @@
 # ChatRobo
 A simple chatbot built with HTML, CSS, and JavaScript.  
-[Live Demo](https://parthkalumali-1.github.io.chatbot-1)
+[Live Demo](https://parthkalumali-1.github.io/chatbot-1)
 
 ## Features
 - Light/Dark theme toggle
