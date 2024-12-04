@@ -12,12 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
         "help": [
             `Here are some commands you can try:
             - hello
-            - joke (Get a random joke)
-            - joke was not funny (Get another joke)
-            - time (Check the current time)
-            - weather (Get weather info)
-            - tictactoe (Play Tic-Tac-Toe)
-            - bye (End the chat)`
+            - /joke (Get a random joke)
+            - /joke was not funny (Get another joke)
+            - /time (Check the current time)
+            - /weather (Get weather info)
+            - /tictactoe (Play Tic-Tac-Toe)
+            - /bye (End the chat)`
         ],
         "joke": [
             "Why don’t skeletons fight each other? They don’t have the guts. 😂",
@@ -86,4 +86,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
             for (let combo of winningCombinations) {
                 const [a, b, c] = combo;
-            
+                if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+                    return board[a];
+                }
+            }
+            return board.includes(null) ? null : "Draw";
+        }
+
+        function handleCellClick(event) {
+            const cellIndex = event.target.dataset.index;
+            if (!board[cellIndex]) {
+                board[cellIndex] = currentPlayer;
+                event.target.textContent = currentPlayer;
+                const winner = checkWinner();
+                if (winner) {
+                    setTimeout(() => alert(winner === "Draw" ? "It's a draw!" : `${winner} wins!`), 100);
+                    generateTicTacToeBoard(); // Reset the board
+                } else {
+                    currentPlayer = currentPlayer === "X" ? "O" : "X";
+                }
+            }
+        }
+
+        for (let i = 0; i < 9; i++) {
+            const cell = document.createElement("div");
+            cell.className = "tic-tac-toe-cell";
+            cell.dataset.index = i;
+            cell.addEventListener("click", handleCellClick);
+            boardContainer.appendChild(cell);
+        }
+    }
+
+    sendButton.addEventListener("click", handleUserInput);
+    inputField.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") handleUserInput();
+    });
+
+    themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+    });
+
+    closeModal.addEventListener("click", () => {
+        modal.style.display = "none";
+    });
+
+    appendMessage("Welcome to ChatRobo! Type 'help' for options.", "bot-message");
+});
