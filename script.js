@@ -3,12 +3,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const inputField = document.getElementById("input-field");
     const sendButton = document.getElementById("send-button");
     const themeToggle = document.getElementById("theme-toggle");
+    const modal = document.getElementById("tic-tac-toe-modal");
+    const closeModal = document.getElementById("close-modal");
+    const boardContainer = document.getElementById("tic-tac-toe-board");
 
     const botReplies = {
         "hello": ["Hi there!", "Hello! 👋", "Hey! How can I assist you?"],
         "help": [
-            "Here are some commands you can try:\n-> hello\n-> /joke\n-> /time\n-> /weather",
-            "Need help? Here's what I can do:\n- Tell jokes (/joke)\n- Show the time (/time)\n- Greet (/hello)\n- Exit (/bye)"
+            `Here are some commands you can try:
+            - hello
+            - joke (Get a random joke)
+            - joke was not funny (Get another joke)
+            - time (Check the current time)
+            - weather (Get weather info)
+            - tictactoe (Play Tic-Tac-Toe)
+            - bye (End the chat)`
         ],
         "joke": [
             "Why don’t skeletons fight each other? They don’t have the guts. 😂",
@@ -21,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ],
         "time": () => `The current time is: ${new Date().toLocaleTimeString()}.`,
         "weather": () => "It's always sunny in ChatRobo world! ☀️",
+        "tictactoe": "Starting Tic-Tac-Toe... Enjoy the game!",
         "bye": "Goodbye! Have a great day! 👋",
     };
 
@@ -50,17 +60,30 @@ document.addEventListener("DOMContentLoaded", () => {
             botReply = botReply || defaultReply;
         }
 
-        setTimeout(() => appendMessage(botReply, "bot-message"), 1000); // Simulate typing delay
+        if (userMessage.toLowerCase() === "/tictactoe") {
+            showTicTacToe();
+        } else {
+            setTimeout(() => appendMessage(botReply, "bot-message"), 1000); // Simulate typing delay
+        }
     }
 
-    sendButton.addEventListener("click", handleUserInput);
-    inputField.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") handleUserInput();
-    });
+    function showTicTacToe() {
+        modal.style.display = "block";
+        generateTicTacToeBoard();
+    }
 
-    themeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark");
-    });
+    function generateTicTacToeBoard() {
+        boardContainer.innerHTML = ""; // Clear previous board
+        const board = Array(9).fill(null);
+        let currentPlayer = "X";
 
-    appendMessage("Welcome to ChatRobo! Type 'help' for options.", "bot-message");
-});
+        function checkWinner() {
+            const winningCombinations = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8],
+                [0, 3, 6], [1, 4, 7], [2, 5, 8],
+                [0, 4, 8], [2, 4, 6]
+            ];
+
+            for (let combo of winningCombinations) {
+                const [a, b, c] = combo;
+            
