@@ -8,19 +8,26 @@
 </head>
 <body>
     <div class="chat-container">
-        <div class="chat-header">
-            <span>Chatbot <span id="toggle-theme">🌙</span></span>
+        <div class="header">
+            <span id="chatbot-title">ChatRobo <span id="theme-icon">🌙</span></span>
+            <button id="toggle-theme">Toggle Theme</button>
         </div>
-        <div class="chat-box" id="chat-box">
-            <!-- Messages will be added here -->
+        <div class="chat-box">
+            <div id="chat-history" class="chat-history">
+                <div class="message bot">Welcome to ChatRobo! Type 'help' for options.</div>
+            </div>
+            <div class="user-input">
+                <input type="text" id="user-message" placeholder="Type your message...">
+                <button id="send-message">Send</button>
+            </div>
         </div>
-        <div class="input-container">
-            <input type="text" id="user-input" placeholder="Type a message...">
-            <button id="send-message">Send</button>
+        <div id="tic-tac-toe-game" class="tic-tac-toe">
+            <h2>Tic-Tac-Toe</h2>
+            <button class="game-btn" onclick="startTicTacToe()">Start Game</button>
+            <div id="tic-tac-toe-board" class="board"></div>
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
