@@ -23,12 +23,4 @@ const messages = {
     "weather": () => "It's always sunny in ChatRobo world! ☀️",
     "tictactoe": "Starting Tic-Tac-Toe... Enjoy the game!",
     "bye": "Goodbye! Have a great day! 👋",
-    "how are you": "I'm doing great, thank you for asking! 😄",
-    "who made you": "I was made with HTML, CSS, and JavaScript by Some Human Existence."
-};
-
- Toggle dark mode
-document.getElementById("toggle-theme").addEventListener("click", function() {
-    document.body.classList.toggle("dark-mode");
-    document.querySelector(".chat-container").classList.toggle("dark-mode");
-    document.getElementById("theme-icon").innerText = document.body.classList
+    "how are you": "
