@@ -3,21 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatRobo</title>
+    <title>Chatbot</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="app">
-        <div id="chat-header">
-            <h1>ChatRobo</h1>
-            <button id="theme-toggle">🌙</button>
+    <!-- Chatbot Container -->
+    <div class="chat-container">
+        <!-- Chat Header -->
+        <div class="chat-header">
+            <span>Chatbot</span>
+            <button id="toggle-theme">🌙</button>
         </div>
-        <div id="chat-container"></div>
-        <div id="input-container">
-            <input type="text" id="input-field" placeholder="Type your message..." />
-            <button id="send-button">Send</button>
+
+        <!-- Chat Box (Messages) -->
+        <div class="chat-box" id="chat-box">
+            <!-- Chat messages will appear here -->
+        </div>
+
+        <!-- Input Container -->
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Type a message...">
+            <button id="send-message">Send</button>
         </div>
     </div>
+
+    <!-- Tic-Tac-Toe Game -->
+    <div id="tic-tac-toe-container" class="tic-tac-toe-board" style="display: none;">
+        <div class="cell" data-cell-index="0"></div>
+        <div class="cell" data-cell-index="1"></div>
+        <div class="cell" data-cell-index="2"></div>
+        <div class="cell" data-cell-index="3"></div>
+        <div class="cell" data-cell-index="4"></div>
+        <div class="cell" data-cell-index="5"></div>
+        <div class="cell" data-cell-index="6"></div>
+        <div class="cell" data-cell-index="7"></div>
+        <div class="cell" data-cell-index="8"></div>
+        <button id="close-tic-tac-toe">Close Game</button>
+    </div>
+
+    <!-- Scripts -->
     <script src="script.js"></script>
 </body>
 </html>
