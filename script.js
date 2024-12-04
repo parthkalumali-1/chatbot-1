@@ -1,4 +1,4 @@
-const responses = {
+const messages = {
     "hello": ["Hi there!", "Hello! 👋", "Hey! How can I assist you?"],
     "help": [
         `Here are some commands you can try:
@@ -23,69 +23,51 @@ const responses = {
     "weather": () => "It's always sunny in ChatRobo world! ☀️",
     "tictactoe": "Starting Tic-Tac-Toe... Enjoy the game!",
     "bye": "Goodbye! Have a great day! 👋",
-    "how are you": "I'm just a bot, but I'm here to help you! 😊",
+    "how are you": "I'm doing great, thank you for asking! 😄",
     "who made you": "I was made with HTML, CSS, and JavaScript by Some Human Existence."
 };
 
-// Function to handle the sending of messages
-function sendMessage() {
-    const input = document.getElementById('user-input');
-    const message = input.value;
-    if (message.trim() === "") return;
-
-    const chatBox = document.getElementById('chat-box');
-    const userMessage = document.createElement('div');
-    userMessage.classList.add('message', 'user');
-    userMessage.textContent = message;
-    chatBox.appendChild(userMessage);
-    input.value = "";
-
-    // Scroll to the bottom of the chat
-    chatBox.scrollTop = chatBox.scrollHeight;
-
-    // Respond based on the user's input
-    const response = getResponse(message);
-    const botMessage = document.createElement('div');
-    botMessage.classList.add('message', 'bot');
-    botMessage.textContent = response;
-    chatBox.appendChild(botMessage);
-
-    // Scroll to the bottom of the chat again after bot response
-    chatBox.scrollTop = chatBox.scrollHeight;
-}
-
-// Function to get a response
-function getResponse(message) {
-    const lowerCaseMessage = message.toLowerCase().trim();
-    if (responses[lowerCaseMessage]) {
-        return Array.isArray(responses[lowerCaseMessage]) ? responses[lowerCaseMessage][Math.floor(Math.random() * responses[lowerCaseMessage].length)] : responses[lowerCaseMessage];
-    } else if (lowerCaseMessage.startsWith('/')) {
-        return "I am sorry, I didn't understand that command.";
-    } else {
-        return "I'm not sure how to respond to that.";
-    }
-}
-
-// Initialize the chatbot with a welcome message
-document.addEventListener('DOMContentLoaded', function() {
-    const chatBox = document.getElementById('chat-box');
-    const welcomeMessage = document.createElement('div');
-    welcomeMessage.classList.add('message', 'bot');
-    welcomeMessage.textContent = 'Welcome to ChatRobo! Type "help" for options.';
-    chatBox.appendChild(welcomeMessage);
-});
-
 // Toggle dark mode
-document.getElementById('toggle-theme').addEventListener('click', function() {
-    document.body.classList.toggle('dark-mode');
+document.getElementById("toggle-theme").addEventListener("click", function() {
+    document.body.classList.toggle("dark-mode");
+    document.querySelector(".chat-container").classList.toggle("dark-mode");
+    document.getElementById("theme-icon").innerText = document.body.classList.contains("dark-mode") ? "🌙" : "🌞";
 });
 
-// Event listener for the send message button
-document.getElementById('send-message').addEventListener('click', sendMessage);
+// Send message
+document.getElementById("send-message").addEventListener("click", function() {
+    const userMessage = document.getElementById("user-message").value;
+    if (userMessage.trim() === "") return;
 
-// Event listener for pressing Enter to send a message
-document.getElementById('user-input').addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-        sendMessage();
-    }
+    // Display user's message
+    displayMessage(userMessage, "user");
+
+    // Process and reply
+    let response = processMessage(userMessage);
+    displayMessage(response, "bot");
+
+    // Clear input
+    document.getElementById("user-message").value = "";
 });
+
+// Display messages
+function displayMessage(message, sender) {
+    const chatHistory = document.getElementById("chat-history");
+    const messageElement = document.createElement("div");
+    messageElement.classList.add("message", sender);
+    messageElement.innerText = message;
+    chatHistory.appendChild(messageElement);
+    chatHistory.scrollTop = chatHistory.scrollHeight; // Scroll to the latest message
+}
+
+// Process the user's message and respond
+function processMessage(message) {
+    let response = "I didn't understand that. Type 'help' for suggestions.";
+
+    // Convert message to lowercase for easy matching
+    const messageLower = message.toLowerCase().trim();
+
+    // Check for command matches
+    if (messages[messageLower]) {
+        const randomIndex =
+
