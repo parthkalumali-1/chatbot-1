@@ -9,16 +9,19 @@ document.addEventListener("DOMContentLoaded", () => {
             "Here are some commands you can try:\n-> hello\n-> /joke\n-> /time\n-> /weather",
             "Need help? Here's what I can do:\n- Tell jokes (/joke)\n- Show the time (/time)\n- how are you?\n- what is your name?\n- bye\n- who made you?",
         ],
-        "/joke": [
+        "joke": [
             "Why don’t skeletons fight each other? They don’t have the guts. 😂",
             "What do you call fake spaghetti? An impasta! 🍝",
             "What do you call cheese that isn’t yours? Nacho cheese! ",
             "Why can't your nose be 12 inches long? Because then it would be a foot! ",
             "Why can’t you trust an atom? Because they make up everything! ",
-            
+
+        "joke was not funny": [
+            "Computer doctor ke paas kyun gaya?, Kyunki usko virus ho gaya tha!😂
+            "Bina daanton wala bhalu kya kehlata hai?, Gummy Bear 🤣
         ],
-        "/time": () => `The current time is: ${new Date().toLocaleTimeString()}.`,
-        "/weather": () => "It's always sunny in ChatRobo world! ☀️",
+        "time": () => `The current time is: ${new Date().toLocaleTimeString()}.`,
+        "weather": () => "It's always sunny in ChatRobo world! ☀️",
         "how are you?": "I'm just a bot 🤖, but I'm here to help you!🤝",
         "what is your name?": "I'm your friendly chatbot 🫂.",
         "bye": "Goodbye! Have a great day! 👋",
