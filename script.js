@@ -3,12 +3,12 @@ const messages = {
     "help": [
         `Here are some commands you can try:
         - hello
-        - /joke (Get a random joke)
-        - /joke was not funny (Get another joke)
-        - /time (Check the current time)
-        - /weather (Get weather info)
-        - /tictactoe (Play Tic-Tac-Toe)
-        - /bye (End the chat)`
+        - joke (Get a random joke)
+        - joke was not funny (Get another joke)
+        - time (Check the current time)
+        - weather (Get weather info)
+        - tictactoe (Play Tic-Tac-Toe)
+        - bye (End the chat)`
     ],
     "joke": [
         "Why don’t skeletons fight each other? They don’t have the guts. 😂",
@@ -27,47 +27,8 @@ const messages = {
     "who made you": "I was made with HTML, CSS, and JavaScript by Some Human Existence."
 };
 
-// Toggle dark mode
+ Toggle dark mode
 document.getElementById("toggle-theme").addEventListener("click", function() {
     document.body.classList.toggle("dark-mode");
     document.querySelector(".chat-container").classList.toggle("dark-mode");
-    document.getElementById("theme-icon").innerText = document.body.classList.contains("dark-mode") ? "🌙" : "🌞";
-});
-
-// Send message
-document.getElementById("send-message").addEventListener("click", function() {
-    const userMessage = document.getElementById("user-message").value;
-    if (userMessage.trim() === "") return;
-
-    // Display user's message
-    displayMessage(userMessage, "user");
-
-    // Process and reply
-    let response = processMessage(userMessage);
-    displayMessage(response, "bot");
-
-    // Clear input
-    document.getElementById("user-message").value = "";
-});
-
-// Display messages
-function displayMessage(message, sender) {
-    const chatHistory = document.getElementById("chat-history");
-    const messageElement = document.createElement("div");
-    messageElement.classList.add("message", sender);
-    messageElement.innerText = message;
-    chatHistory.appendChild(messageElement);
-    chatHistory.scrollTop = chatHistory.scrollHeight; // Scroll to the latest message
-}
-
-// Process the user's message and respond
-function processMessage(message) {
-    let response = "I didn't understand that. Type 'help' for suggestions.";
-
-    // Convert message to lowercase for easy matching
-    const messageLower = message.toLowerCase().trim();
-
-    // Check for command matches
-    if (messages[messageLower]) {
-        const randomIndex =
-
+    document.getElementById("theme-icon").innerText = document.body.classList
