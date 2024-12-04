@@ -12,12 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
         "help": [
             `Here are some commands you can try:
             - hello
-            - /joke (Get a random joke)
-            - /joke was not funny (Get another joke)
-            - /time (Check the current time)
-            - /weather (Get weather info)
-            - /tictactoe (Play Tic-Tac-Toe)
-            - /bye (End the chat)`
+            - joke (Get a random joke)
+            - joke was not funny (Get another joke)
+            - time (Check the current time)
+            - weather (Get weather info)
+            - tictactoe (Play Tic-Tac-Toe)
+            - bye (End the chat)`
         ],
         "joke": [
             "Why don’t skeletons fight each other? They don’t have the guts. 😂",
