@@ -12,6 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
         "/joke": [
             "Why don’t skeletons fight each other? They don’t have the guts. 😂",
             "What do you call fake spaghetti? An impasta! 🍝",
+            "What do you call cheese that isn’t yours? Nacho cheese! ",
+            "Why can't your nose be 12 inches long? Because then it would be a foot! ",
+            "Why can’t you trust an atom? Because they make up everything! ",
+            
         ],
         "/time": () => `The current time is: ${new Date().toLocaleTimeString()}.`,
         "/weather": () => "It's always sunny in ChatRobo world! ☀️",
