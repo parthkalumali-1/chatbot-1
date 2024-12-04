@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function showTicTacToe() {
-        modal.style.display = "block";
+        modal.style.display = "flex";
         generateTicTacToeBoard();
     }
 
@@ -79,56 +79,67 @@ document.addEventListener("DOMContentLoaded", () => {
 
         function checkWinner() {
             const winningCombinations = [
-                [0, 1, 2], [3, 4, 5], [6, 7, 8],
-                [0, 3, 6], [1, 4, 7], [2, 5, 8],
-                [0, 4, 8], [2, 4, 6]
+                [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+                [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+                [0, 4, 8], [2, 4, 6] // Diagonals
             ];
-
-            for (let combo of winningCombinations) {
-                const [a, b, c] = combo;
+            for (let combination of winningCombinations) {
+                const [a, b, c] = combination;
                 if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-                    return board[a];
+                    return board[a]; // Return winner ('X' or 'O')
                 }
             }
-            return board.includes(null) ? null : "Draw";
+            return board.includes(null) ? null : "Draw"; // Return "Draw" if no winner
         }
 
-        function handleCellClick(event) {
-            const cellIndex = event.target.dataset.index;
-            if (!board[cellIndex]) {
-                board[cellIndex] = currentPlayer;
-                event.target.textContent = currentPlayer;
-                const winner = checkWinner();
-                if (winner) {
-                    setTimeout(() => alert(winner === "Draw" ? "It's a draw!" : `${winner} wins!`), 100);
-                    generateTicTacToeBoard(); // Reset the board
-                } else {
-                    currentPlayer = currentPlayer === "X" ? "O" : "X";
-                }
+        function handleCellClick(index) {
+            if (board[index] || checkWinner()) return; // Ignore if cell is already clicked or game over
+
+            board[index] = currentPlayer;
+            document.getElementById(`cell-${index}`).textContent = currentPlayer;
+
+            const winner = checkWinner();
+            if (winner) {
+                setTimeout(() => {
+                    if (winner === "Draw") {
+                        alert("It's a draw!");
+                    } else {
+                        alert(`${winner} wins!`);
+                    }
+                    resetBoard();
+                }, 500);
+            } else {
+                currentPlayer = currentPlayer === "X" ? "O" : "X";
             }
         }
 
+        // Create the Tic-Tac-Toe board
         for (let i = 0; i < 9; i++) {
             const cell = document.createElement("div");
             cell.className = "tic-tac-toe-cell";
-            cell.dataset.index = i;
-            cell.addEventListener("click", handleCellClick);
+            cell.id = `cell-${i}`;
+            cell.addEventListener("click", () => handleCellClick(i));
             boardContainer.appendChild(cell);
         }
     }
 
-    sendButton.addEventListener("click", handleUserInput);
-    inputField.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") handleUserInput();
-    });
+    function resetBoard() {
+        const cells = document.querySelectorAll(".tic-tac-toe-cell");
+        cells.forEach(cell => cell.textContent = "");
+        modal.style.display = "none"; // Close modal after game ends
+    }
 
     themeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark");
+        document.body.classList.toggle("dark-theme");
     });
 
     closeModal.addEventListener("click", () => {
-        modal.style.display = "none";
+        modal.style.display = "none"; // Close the Tic-Tac-Toe modal
     });
 
-    appendMessage("Welcome to ChatRobo! Type 'help' for options.", "bot-message");
+    sendButton.addEventListener("click", handleUserInput);
+
+    inputField.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") handleUserInput();
+    });
 });
