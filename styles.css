@@ -1,4 +1,4 @@
-/* General Reset for Better Layout Control */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -15,6 +15,13 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #f4f4f4;
+    color: #000;
+}
+
+/* Dark Theme */
+body.dark {
+    background-color: #121212;
+    color: #fff;
 }
 
 /* Chat Container */
@@ -29,8 +36,8 @@ body {
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px; /* Space from input area */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow for elegance */
+    margin-bottom: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Messages */
@@ -39,7 +46,7 @@ body {
     padding: 10px;
     border-radius: 5px;
     max-width: 70%;
-    word-wrap: break-word; /* Ensure text wraps correctly */
+    word-wrap: break-word;
 }
 
 .user-message {
@@ -61,19 +68,17 @@ body {
     max-width: 600px;
 }
 
-/* Input Field */
 #input-field {
     flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
-    margin-right: 5px; /* Add spacing between input and button */
+    margin-right: 5px;
 }
 
-/* Send Button */
 #send-button {
-    padding: 10px 15px; /* Adjust padding for consistency */
+    padding: 10px 15px;
     background-color: #007bff;
     color: white;
     border: none;
@@ -84,10 +89,10 @@ body {
 }
 
 #send-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
 }
 
-/* Chat Header (Optional Title for Chat) */
+/* Header */
 header {
     width: 100%;
     max-width: 600px;
@@ -98,20 +103,21 @@ header {
     border-radius: 10px 10px 0 0;
     font-size: 1.5rem;
     font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Add Responsiveness for Small Screens */
+header button {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* Responsiveness */
 @media (max-width: 768px) {
     #chat-container {
-        height: 60vh; /* Reduce height for smaller devices */
-    }
-
-    #input-field {
-        font-size: 0.9rem;
-    }
-
-    #send-button {
-        font-size: 0.9rem;
+        height: 60vh;
     }
 }
