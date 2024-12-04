@@ -69,7 +69,7 @@ body.dark-mode {
     display: flex;
     background: #000;
     position: relative;
-    cursor: pointer;
+    cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="36" height="48" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="%23FF0000" stroke="%23000000" stroke-width="2"></circle></svg>') 16 16, auto; /* Custom cursor */
 }
 
 .custom-button button p {
@@ -175,40 +175,4 @@ body.dark-mode {
     max-width: 70%;
 }
 
-.chat-history .bot {
-    background-color: #e0e0e0;
-    align-self: flex-start;
-}
-
-.chat-history .user {
-    background-color: #8b0000;
-    color: white;
-    align-self: flex-end;
-}
-
-.user-input {
-    display: flex;
-    padding: 10px;
-    background-color: #fff;
-    border-top: 1px solid #ddd;
-}
-
-#user-message {
-    flex: 1;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-}
-
-#send-message {
-    padding: 10px 15px;
-    border: none;
-    background-color: #8B0000;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-#send-message:hover {
-    background-color: #b22222;
-}
+.chat-history
