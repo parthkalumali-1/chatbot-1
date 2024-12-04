@@ -7,34 +7,17 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="app-container">
-        <header id="chat-header">
+    <div id="app">
+        <div id="chat-header">
             <h1>ChatRobo</h1>
-            <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
-        </header>
-        <div id="chat-container" aria-label="Chat messages"></div>
+            <button id="theme-toggle">🌙</button>
+        </div>
+        <div id="chat-container"></div>
         <div id="input-container">
-            <input 
-                type="text" 
-                id="input-field" 
-                placeholder="Type your message..." 
-                aria-label="Type your message" 
-            />
-            <button id="send-button" aria-label="Send message">Send</button>
+            <input type="text" id="input-field" placeholder="Type your message..." />
+            <button id="send-button">Send</button>
         </div>
     </div>
-
-    <!-- Tic-Tac-Toe Modal -->
-    <div id="tic-tac-toe-modal" class="modal">
-        <div class="modal-content">
-            <h2>Tic-Tac-Toe</h2>
-            <div id="tic-tac-toe-board">
-                <!-- Tic-Tac-Toe board will be generated dynamically -->
-            </div>
-            <button id="close-modal" class="close-button">Close</button>
-        </div>
-    </div>
-
     <script src="script.js"></script>
 </body>
 </html>
