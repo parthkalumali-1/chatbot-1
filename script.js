@@ -39,14 +39,13 @@ document.getElementById("send-message").addEventListener("click", function() {
     const userInput = document.getElementById("user-message").value.trim();
     if (userInput === "") return;
 
-    // Add user message to chat history
     addMessage(userInput, 'user');
+    document.getElementById("typing-indicator").style.display = "block"; // Show typing indicator
 
     // Simple command processing
     let response = "Sorry, I didn't understand that.";
     const lowerInput = userInput.toLowerCase();
     if (messages[lowerInput]) {
-        // Check if it's an array of responses
         if (Array.isArray(messages[lowerInput])) {
             const randomIndex = Math.floor(Math.random() * messages[lowerInput].length);
             response = messages[lowerInput][randomIndex];
@@ -55,15 +54,13 @@ document.getElementById("send-message").addEventListener("click", function() {
         }
     }
 
-    // Add bot response to chat history with a slight delay
     setTimeout(() => {
         addMessage(response, 'bot');
-        // Clear input field and return focus
-        document.getElementById("user-message").value = '';
-        document.getElementById("user-message").focus();
-    }, 500);
+        document.getElementById("user-message").value = ''; // Clear input field
+        document.getElementById("user-message").focus(); // Return focus to input field
+        document.getElementById("typing-indicator").style.display = "none"; // Hide typing indicator
+    }, 1000);
 
-    // Scroll to bottom
     scrollToBottom();
 });
 
