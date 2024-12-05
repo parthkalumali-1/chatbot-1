@@ -1,4 +1,4 @@
-/* General Styles */
+/* General Body Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f1f1f1;
@@ -8,9 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow: hidden;
     transition: background-color 0.3s ease;
-    cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="32" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="%23FF0000" stroke="%23000000" stroke-width="2"></circle></svg>') 12 12, auto;
 }
 
 /* Dark Mode */
@@ -19,29 +17,29 @@ body.dark-mode {
     color: white;
 }
 
+/* Chat Container */
 .chat-container {
     width: 400px;
-    max-width: 100%;
-    height: 500px;
+    height: 600px;
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
 .chat-container.dark-mode {
-    background-color: #333;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    background-color: #333333;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
 }
 
+/* Header */
 .header {
     background-color: #8B0000;
     color: white;
-    padding: 10px;
+    padding: 15px;
     font-size: 20px;
     text-align: center;
     display: flex;
@@ -57,14 +55,19 @@ body.dark-mode {
     font-size: 20px;
 }
 
+/* Chat Box */
 .chat-box {
     flex: 1;
-    padding: 10px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     overflow-y: auto;
-    border-top: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+.chat-box.dark-mode {
+    background-color: #444444;
 }
 
 .chat-history {
@@ -72,59 +75,59 @@ body.dark-mode {
     flex-direction: column;
 }
 
-.chat-history .message {
-    padding: 8px 15px;
+.message {
+    padding: 10px 15px;
     margin: 5px 0;
     border-radius: 10px;
-    background-color: #f0f0f0;
-    max-width: 70%;
+    max-width: 75%;
+    word-wrap: break-word;
 }
 
-.chat-history .bot {
-    background-color: #e0e0e0;
-    align-self: flex-start;
-}
-
-.chat-history .user {
-    background-color: #8b0000;
-    color: white;
+.message.user {
     align-self: flex-end;
+    background-color: #8B0000;
+    color: white;
 }
 
+.message.bot {
+    align-self: flex-start;
+    background-color: #cccccc;
+}
+
+/* User Input Section */
 .user-input {
     display: flex;
     padding: 10px;
-    background-color: #fff;
-    border-top: 1px solid #ddd;
+    background-color: #ffffff;
+    border-top: 1px solid #dddddd;
+}
+
+.user-input.dark-mode {
+    background-color: #555555;
+    border-color: #666666;
 }
 
 #user-message {
     flex: 1;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #ddd;
+    border: 1px solid #dddddd;
+    font-size: 14px;
     margin-right: 10px;
+    outline: none;
 }
 
-.custom-button button {
+.send-button {
+    background-color: #8B0000;
+    color: white;
     border: none;
-    width: 140px;
-    height: 50px;
-    color: #fff;
-    display: flex;
-    background: #000;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
+    padding: 10px 20px;
+    font-size: 14px;
     border-radius: 5px;
-    position: relative;
-    transition: transform 0.2s ease;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.custom-button button p {
-    font-size: 17px;
-    font-weight: bold;
-    text-align: center;
+.send-button:hover {
+    background-color: #a31b1b;
 }
-
-
