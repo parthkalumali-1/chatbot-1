@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="chat-container">
+    <div class="chat-container" id="chat-container">
         <div class="header">
             <span>ChatBot</span>
             <button id="toggle-theme" class="toggle-theme-button">
@@ -22,8 +22,10 @@
         </div>
 
         <div class="user-input">
-            <input type="text" id="user-message" placeholder="Type a message...">
-            <button id="send-message" class="send-button">Send</button>
+            <input type="text" id="input-field" placeholder="Type a message...">
+            <div class="custom-button">
+                <button id="send-button">Send</button>
+            </div>
         </div>
     </div>
 
