@@ -39,6 +39,7 @@ document.getElementById("send-message").addEventListener("click", function() {
     const userInput = document.getElementById("user-message").value.trim();
     if (userInput === "") return;
 
+    // Add user message to chat history
     addMessage(userInput, 'user');
 
     // Simple command processing
@@ -54,12 +55,16 @@ document.getElementById("send-message").addEventListener("click", function() {
         }
     }
 
+    // Add bot response to chat history with a slight delay
     setTimeout(() => {
         addMessage(response, 'bot');
+        // Clear input field and return focus
+        document.getElementById("user-message").value = '';
+        document.getElementById("user-message").focus();
     }, 500);
 
-    // Clear input field
-    document.getElementById("user-message").value = '';
+    // Scroll to bottom
+    scrollToBottom();
 });
 
 // Add message to chat history
@@ -68,8 +73,20 @@ function addMessage(text, sender) {
     messageDiv.classList.add("message", sender);
     messageDiv.textContent = text;
     document.querySelector(".chat-history").appendChild(messageDiv);
+}
 
-    // Scroll to the bottom
-    const chatHistory = document.querySelector(".chat-history"); // Fixed to use class selector
+// Scroll to the bottom of the chat history
+function scrollToBottom() {
+    const chatHistory = document.querySelector(".chat-history");
     chatHistory.scrollTop = chatHistory.scrollHeight;
 }
+
+// Disable/enable send button based on input
+document.getElementById("user-message").addEventListener("input", function() {
+    const userInput = document.getElementById("user-message").value.trim();
+    const sendButton = document.getElementById("send-message");
+    sendButton.disabled = userInput === "";
+});
+
+// Focus on the input field when the page loads
+document.getElementById("user-message").focus();
