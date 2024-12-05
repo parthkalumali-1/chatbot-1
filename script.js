@@ -43,11 +43,15 @@ document.getElementById("send-message").addEventListener("click", function() {
 
     // Simple command processing
     let response = "Sorry, I didn't understand that.";
-    if (messages[userInput.toLowerCase()]) {
-        const randomIndex = Math.floor(Math.random() * messages[userInput.toLowerCase()].length);
-        response = messages[userInput.toLowerCase()][randomIndex];
-    } else if (typeof messages[userInput.toLowerCase()] === 'function') {
-        response = messages[userInput.toLowerCase()]();
+    const lowerInput = userInput.toLowerCase();
+    if (messages[lowerInput]) {
+        // Check if it's an array of responses
+        if (Array.isArray(messages[lowerInput])) {
+            const randomIndex = Math.floor(Math.random() * messages[lowerInput].length);
+            response = messages[lowerInput][randomIndex];
+        } else if (typeof messages[lowerInput] === 'function') {
+            response = messages[lowerInput]();
+        }
     }
 
     setTimeout(() => {
@@ -66,6 +70,6 @@ function addMessage(text, sender) {
     document.querySelector(".chat-history").appendChild(messageDiv);
 
     // Scroll to the bottom
-    const chatHistory = document.getElementById("chat-history");
+    const chatHistory = document.querySelector(".chat-history"); // Fixed to use class selector
     chatHistory.scrollTop = chatHistory.scrollHeight;
 }
